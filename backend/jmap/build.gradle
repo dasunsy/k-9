@@ -9,7 +9,7 @@ if (rootProject.testCoverage) {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":backend:api")
+    api project(k9Modules.backend.api)
 
     api "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     implementation "rs.ltt.jmap:jmap-client:0.3.1"
@@ -17,7 +17,7 @@ dependencies {
     implementation "com.squareup.moshi:moshi:${versions.moshi}"
     kapt "com.squareup.moshi:moshi-kotlin-codegen:${versions.moshi}"
 
-    testImplementation project(":mail:testing")
+    testImplementation project(k9Modules.mail.testing)
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
     testImplementation("com.squareup.okhttp3:mockwebserver:${versions.okhttp}")
 }

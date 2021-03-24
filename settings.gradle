@@ -1,25 +1,31 @@
-include ':app:k9mail'
-include ':app:k9mail-jmap'
-include ':app:ui:base'
-include ':app:ui:setup'
-include ':app:ui:legacy'
-include ':app:core'
-include ':app:storage'
-include ':app:crypto-openpgp'
-include ':app:testing'
-include ':app:autodiscovery:api'
-include ':app:autodiscovery:providersxml'
-include ':app:autodiscovery:srvrecords'
-include ':app:autodiscovery:thunderbird'
-include ':mail:common'
-include ':mail:testing'
-include ':mail:protocols:imap'
-include ':mail:protocols:pop3'
-include ':mail:protocols:webdav'
-include ':mail:protocols:smtp'
-include ':backend:api'
-include ':backend:imap'
-include ':backend:pop3'
-include ':backend:webdav'
-include ':backend:jmap'
-include ':plugins:openpgp-api-lib:openpgp-api'
+
+println('hello settings.gradle')
+
+apply from: './buildConfig/k9-lib.gradle'
+
+
+include k9Modules.k9mail
+include k9Modules.k9mailJmap
+include k9Modules.UI.base
+include k9Modules.UI.setup
+include k9Modules.UI.legacy
+include k9Modules.core
+include k9Modules.storage
+include k9Modules.cryptoOpenpgp
+include k9Modules.testing
+include k9Modules.autodiscovery.api
+include k9Modules.autodiscovery.providersxml
+include k9Modules.autodiscovery.srvrecords
+include k9Modules.autodiscovery.thunderbird
+include k9Modules.mail.common
+include k9Modules.mail.testing
+include k9Modules.mail.protocols.imap
+include k9Modules.mail.protocols.pop3
+include k9Modules.mail.protocols.webdav
+include k9Modules.mail.protocols.smtp
+include k9Modules.backend.api
+include k9Modules.backend.imap
+include k9Modules.backend.pop3
+include k9Modules.backend.webdav
+include k9Modules.backend.jmap
+include k9Modules.plugins.openpgpApiLib.openpgpApi

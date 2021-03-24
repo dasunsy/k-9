@@ -1,0 +1,50 @@
+ext {
+    k9Modules = [
+            k9mail       : ':app:k9mail',
+            k9mailJmap   : ':app:k9mail-jmap',
+
+            UI           : [
+                    base  : ':app:ui:base',
+                    setup : ':app:ui:setup',
+                    legacy: ':app:ui:legacy',
+            ],
+            core         : ':app:core',
+            storage      : ':app:storage',
+            cryptoOpenpgp: ':app:crypto-openpgp',
+            testing      : ':app:testing',
+
+            autodiscovery: [
+                    api         : ':app:autodiscovery:api',
+                    providersxml: ':app:autodiscovery:providersxml',
+                    srvrecords  : ':app:autodiscovery:srvrecords',
+                    thunderbird : ':app:autodiscovery:thunderbird'
+            ],
+
+            mail         : [
+                    common : ':mail:common',
+                    testing: ':mail:testing',
+
+                    protocols: [
+                            imap   : ':mail:protocols:imap',
+                            pop3   : ':mail:protocols:pop3',
+                            webdav : ':mail:protocols:webdav',
+                            smtp   : ':mail:protocols:smtp'
+                    ],
+
+            ],
+
+            backend      : [
+                    api   : ':backend:api',
+                    imap  : ':backend:imap',
+                    pop3  : ':backend:pop3',
+                    webdav: ':backend:webdav',
+                    jmap  : ':backend:jmap'
+            ],
+            plugins      : [
+                    openpgpApiLib: [
+                            openpgpApi: ':plugins:openpgp-api-lib:openpgp-api'
+                    ]
+            ]
+    ]
+}
+

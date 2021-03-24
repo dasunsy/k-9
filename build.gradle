@@ -1,5 +1,11 @@
+
 buildscript {
+
+    apply from: './buildConfig/k9-lib.gradle'
+
+
     ext {
+
         buildConfig = [
                 'compileSdk': 29,
                 'targetSdk': 29,

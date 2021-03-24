@@ -8,12 +8,12 @@ if (rootProject.testCoverage) {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":backend:api")
-    api project(":mail:protocols:webdav")
+    api project(k9Modules.backend.api)
+    api project(k9Modules.mail.protocols.webdav)
 
     implementation "com.jakewharton.timber:timber:${versions.timber}"
 
-    testImplementation project(":mail:testing")
+    testImplementation project(k9Modules.mail.testing)
     testImplementation "junit:junit:${versions.junit}"
     testImplementation "org.mockito:mockito-core:${versions.mockito}"
 }

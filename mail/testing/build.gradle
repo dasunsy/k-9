@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":mail:common")
+    api project(k9Modules.mail.common)
 
     api "com.squareup.okio:okio:${versions.okio}"
     api "org.robolectric:robolectric:${versions.robolectric}"

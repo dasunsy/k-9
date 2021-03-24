@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    implementation project(":app:core")
+    implementation project(k9Modules.core)
 
     api "androidx.appcompat:appcompat:${versions.androidxAppCompat}"
     api "androidx.navigation:navigation-fragment-ktx:${versions.androidxNavigation}"

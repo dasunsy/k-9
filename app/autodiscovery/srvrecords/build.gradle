@@ -4,15 +4,15 @@ apply plugin: 'org.jetbrains.kotlin.android'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    implementation project(":app:core")
-    implementation project(":mail:common")
-    implementation project(":app:autodiscovery:api")
+    implementation project(k9Modules.core)
+    implementation project(k9Modules.mail.common)
+    implementation project(k9Modules.autodiscovery.api)
 
     implementation "com.jakewharton.timber:timber:${versions.timber}"
     implementation "org.minidns:minidns-hla:${versions.minidns}"
 
-    testImplementation project(':app:testing')
-    testImplementation project(":backend:imap")
+    testImplementation project(k9Modules.testing)
+    testImplementation project(k9Modules.backend.imap)
     testImplementation "org.robolectric:robolectric:${versions.robolectric}"
     testImplementation "androidx.test:core:${versions.androidxTestCore}"
     testImplementation "junit:junit:${versions.junit}"

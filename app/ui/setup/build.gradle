@@ -4,10 +4,10 @@ apply plugin: 'org.jetbrains.kotlin.android'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":app:ui:base")
-    implementation project(":app:core")
-    implementation project(":app:autodiscovery:api")
-    implementation project(":mail:common")
+    api project(k9Modules.UI.base)
+    implementation project(k9Modules.core)
+    implementation project(k9Modules.autodiscovery.api)
+    implementation project(k9Modules.mail.common)
 
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.androidxLifecycle}"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.androidxLifecycle}"
@@ -18,8 +18,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinCoroutines}"
 
-    testImplementation project(':mail:testing')
-    testImplementation project(':app:testing')
+    testImplementation project(k9Modules.mail.testing)
+    testImplementation project(k9Modules.testing)
     testImplementation "org.robolectric:robolectric:${versions.robolectric}"
     testImplementation "junit:junit:${versions.junit}"
     testImplementation "com.google.truth:truth:${versions.truth}"

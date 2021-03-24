@@ -5,18 +5,18 @@ apply plugin: 'org.jetbrains.kotlin.plugin.parcelize'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":app:ui:base")
-    debugImplementation project(":app:ui:setup")
-    implementation project(":app:core")
-    implementation project(":app:autodiscovery:api")
-    implementation project(":app:autodiscovery:providersxml")
-    implementation project(":mail:common")
+    api project(k9Modules.UI.base)
+    debugImplementation project(k9Modules.UI.setup)
+    implementation project(k9Modules.core)
+    implementation project(k9Modules.autodiscovery.api)
+    implementation project(k9Modules.autodiscovery.providersxml)
+    implementation project(k9Modules.mail.common)
 
     //TODO: Remove AccountSetupIncoming's dependency on these
-    compileOnly project(":mail:protocols:imap")
-    compileOnly project(":mail:protocols:webdav")
+    compileOnly project(k9Modules.mail.protocols.imap)
+    compileOnly project(k9Modules.mail.protocols.webdav)
 
-    implementation project(':plugins:openpgp-api-lib:openpgp-api')
+    implementation project(k9Modules.plugins.openpgpApiLib.openpgpApi)
 
     implementation "androidx.appcompat:appcompat:${versions.androidxAppCompat}"
     implementation "androidx.preference:preference:${versions.androidxPreference}"
@@ -53,9 +53,9 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:${versions.glide}"
     annotationProcessor "com.github.bumptech.glide:compiler:${versions.glide}"
 
-    testImplementation project(':mail:testing')
-    testImplementation project(':app:storage')
-    testImplementation project(':app:testing')
+    testImplementation project(k9Modules.mail.testing)
+    testImplementation project(k9Modules.storage)
+    testImplementation project(k9Modules.testing)
     testImplementation "org.robolectric:robolectric:${versions.robolectric}"
     testImplementation "junit:junit:${versions.junit}"
     testImplementation "com.google.truth:truth:${versions.truth}"

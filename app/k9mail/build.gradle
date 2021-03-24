@@ -9,12 +9,12 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
     implementation project(":app:ui:legacy")
-    implementation project(":app:core")
-    implementation project(":app:storage")
-    implementation project(":app:crypto-openpgp")
-    implementation project(":backend:imap")
-    implementation project(":backend:pop3")
-    implementation project(":backend:webdav")
+    implementation project(k9Modules.core)
+    implementation project(k9Modules.storage)
+    implementation project(k9Modules.cryptoOpenpgp)
+    implementation project(k9Modules.backend.imap)
+    implementation project(k9Modules.backend.pop3)
+    implementation project(k9Modules.backend.webdav)
 
     implementation "androidx.appcompat:appcompat:${versions.androidxAppCompat}"
     implementation "androidx.core:core-ktx:${versions.androidxCore}"
@@ -30,7 +30,7 @@ dependencies {
     }
 
     // Required for DependencyInjectionTest to be able to resolve OpenPgpApiManager
-    testImplementation project(':plugins:openpgp-api-lib:openpgp-api')
+    testImplementation project(k9Modules.plugins.openpgpApiLib.openpgpApi)
 
     testImplementation "org.robolectric:robolectric:${versions.robolectric}"
     testImplementation "junit:junit:${versions.junit}"

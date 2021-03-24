@@ -4,7 +4,7 @@ apply plugin: 'org.jetbrains.kotlin.android'
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    implementation project(':app:core')
+    implementation project(k9Modules.core)
 
     api "junit:junit:${versions.junit}"
     api "org.robolectric:robolectric:${versions.robolectric}"

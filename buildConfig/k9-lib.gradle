@@ -1,4 +1,6 @@
 ext {
+    pathPrefix = ''
+
     k9Modules = [
             k9mailApp    : ':app:k9mail-app',
             k9mailJmap   : ':app:k9mail-jmap',
@@ -47,5 +49,20 @@ ext {
                     ]
             ]
     ]
+
+    checkK9ModulesPathPrefix(k9Modules, pathPrefix)
+
+
+}
+
+def checkK9ModulesPathPrefix(Map k9Modules, String pathPrefix) {
+    k9Modules.each {
+        if (it.value instanceof String) {
+            it.value = "${pathPrefix}${it.value}"
+            println(it)
+        } else {
+            checkK9ModulesPathPrefix(it.value, pathPrefix)
+        }
+    }
 }
 

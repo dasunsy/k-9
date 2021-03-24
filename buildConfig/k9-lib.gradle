@@ -1,7 +1,8 @@
 ext {
     k9Modules = [
-            k9mail       : ':app:k9mail',
+            k9mailApp    : ':app:k9mail-app',
             k9mailJmap   : ':app:k9mail-jmap',
+            k9mail       : ':app:k9mail',
 
             UI           : [
                     base  : ':app:ui:base',
@@ -21,14 +22,14 @@ ext {
             ],
 
             mail         : [
-                    common : ':mail:common',
-                    testing: ':mail:testing',
+                    common   : ':mail:common',
+                    testing  : ':mail:testing',
 
                     protocols: [
-                            imap   : ':mail:protocols:imap',
-                            pop3   : ':mail:protocols:pop3',
-                            webdav : ':mail:protocols:webdav',
-                            smtp   : ':mail:protocols:smtp'
+                            imap  : ':mail:protocols:imap',
+                            pop3  : ':mail:protocols:pop3',
+                            webdav: ':mail:protocols:webdav',
+                            smtp  : ':mail:protocols:smtp'
                     ],
 
             ],

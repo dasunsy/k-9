@@ -5,6 +5,7 @@ apply from: './buildConfig/k9-lib.gradle'
 
 
 include k9Modules.k9mail
+include k9Modules.k9mailApp
 include k9Modules.k9mailJmap
 include k9Modules.UI.base
 include k9Modules.UI.setup

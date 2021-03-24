@@ -1,45 +1,15 @@
-//apply plugin: 'com.android.application'
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.application'
+//apply plugin: 'com.android.library'
 
 apply plugin: 'org.jetbrains.kotlin.android'
 
-if (rootProject.testCoverage) {
-    apply plugin: 'jacoco'
-}
+//if (rootProject.testCoverage) {
+//    apply plugin: 'jacoco'
+//}
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
+    implementation project(k9Modules.k9mail)
 
-    api project(":app:ui:legacy")
-    implementation project(k9Modules.core)
-    implementation project(k9Modules.storage)
-    implementation project(k9Modules.cryptoOpenpgp)
-    implementation project(k9Modules.backend.imap)
-    implementation project(k9Modules.backend.pop3)
-    implementation project(k9Modules.backend.webdav)
-
-    implementation "androidx.appcompat:appcompat:${versions.androidxAppCompat}"
-    implementation "androidx.core:core-ktx:${versions.androidxCore}"
-    implementation "com.takisoft.preferencex:preferencex:${versions.preferencesFix}"
-    implementation "com.jakewharton.timber:timber:${versions.timber}"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinCoroutines}"
-
-    implementation "com.github.bumptech.glide:glide:${versions.glide}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${versions.glide}"
-
-    if (project.hasProperty('k9mail.enableLeakCanary') && project.property('k9mail.enableLeakCanary') == "true") {
-        debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
-    }
-
-    // Required for DependencyInjectionTest to be able to resolve OpenPgpApiManager
-    testImplementation project(k9Modules.plugins.openpgpApiLib.openpgpApi)
-
-    testImplementation "org.robolectric:robolectric:${versions.robolectric}"
-    testImplementation "junit:junit:${versions.junit}"
-    testImplementation "com.google.truth:truth:${versions.truth}"
-    testImplementation "org.mockito:mockito-core:${versions.mockito}"
-    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitoKotlin}"
-    testImplementation "org.koin:koin-test:${versions.koin}"
 }
 
 android {
@@ -47,6 +17,8 @@ android {
     buildToolsVersion buildConfig.buildTools
 
     defaultConfig {
+        applicationId "com.fsck.k9"
+        testApplicationId "com.fsck.k9.tests"
 
         versionCode 27032
         versionName '5.733-SNAPSHOT'
@@ -81,6 +53,7 @@ android {
         }
 
         debug {
+            applicationIdSuffix ".debug"
             testCoverageEnabled rootProject.testCoverage
 
             minifyEnabled false
@@ -111,10 +84,10 @@ android {
         exclude 'DebugProbesKt.bin'
     }
 
-//    dependenciesInfo {
-//        includeInApk = false
-//        includeInBundle = false
-//    }
+    dependenciesInfo {
+        includeInApk = false
+        includeInBundle = false
+    }
 
     compileOptions {
         sourceCompatibility javaVersion
@@ -143,4 +116,9 @@ if (project.hasProperty('storeFile')) {
 }
 if (project.hasProperty('storePassword')) {
     android.signingConfigs.release.storePassword = storePassword
+}
+
+
+gradle.beforeProject { p ->
+    println("Evaluation beforeProject(from app-mail/k9master-kotlin/app/k9mail/build.gradle) ->"+p)
 }

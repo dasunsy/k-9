@@ -17,7 +17,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 private val mainAppModule = module {
-    single { App.appConfig }
+    single { appConfig }
     single {
         MessagingListenerProvider(
             listOf(

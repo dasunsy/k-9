@@ -50,8 +50,8 @@ import timber.log.Timber;
 
 
 public class MessageProvider extends ContentProvider {
-    public static String AUTHORITY = BuildConfig.APPLICATION_ID + ".messageprovider";
-    public static Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
+//    public static String AUTHORITY = BuildConfig.APPLICATION_ID + ".messageprovider";
+//    public static Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY);
 
     private static final String[] DEFAULT_MESSAGE_PROJECTION = new String[] {
             MessageColumns._ID,
@@ -102,9 +102,20 @@ public class MessageProvider extends ContentProvider {
         messagingController.addListener(new SimpleMessagingListener() {
             @Override
             public void folderStatusChanged(Account account, long folderId) {
-                context.getContentResolver().notifyChange(CONTENT_URI, null);
+                context.getContentResolver().notifyChange(getContentUri(context), null);
             }
         });
+    }
+
+    public static String getAuthority(Context context) {
+        String packageName = context.getPackageName();
+        Timber.v("getAuthority packageName : %s", packageName);
+
+        return packageName + ".messageprovider";
+    }
+
+    public static Uri getContentUri(Context context) {
+        return  Uri.parse("content://" + getAuthority(context));
     }
 
     @Override
@@ -200,7 +211,7 @@ public class MessageProvider extends ContentProvider {
         queryHandlers.add(handler);
 
         int code = queryHandlers.indexOf(handler);
-        uriMatcher.addURI(AUTHORITY, handler.getPath(), code);
+        uriMatcher.addURI(getAuthority(getContext()), handler.getPath(), code);
     }
 
 
@@ -385,7 +396,7 @@ public class MessageProvider extends ContentProvider {
         public String getField(MessageInfoHolder source) {
             LocalMessage message = source.message;
             int accountNumber = message.getAccount().getAccountNumber();
-            return CONTENT_URI.buildUpon()
+            return getContentUri(DI.get(Context.class)).buildUpon()
                     .appendPath("delete_message")
                     .appendPath(Integer.toString(accountNumber))
                     .appendPath(Long.toString(message.getFolder().getDatabaseId()))

@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import com.fsck.k9.DI;
 import com.fsck.k9.K9;
 import com.fsck.k9.R;
 import com.fsck.k9.external.MessageProvider;
@@ -69,7 +70,7 @@ public class MessageListRemoteViewFactory implements RemoteViewsService.RemoteVi
     private void loadMessageList() {
         mailItems.clear();
 
-        Uri unifiedInboxUri = MessageProvider.CONTENT_URI.buildUpon().appendPath("inbox_messages").build();
+        Uri unifiedInboxUri = MessageProvider.getContentUri(DI.get(Context.class)).buildUpon().appendPath("inbox_messages").build();
         Cursor cursor = context.getContentResolver().query(unifiedInboxUri, MAIL_LIST_PROJECTIONS, null, null, null);
 
         if (cursor == null) {

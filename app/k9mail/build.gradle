@@ -10,7 +10,7 @@ if (rootProject.testCoverage) {
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versions.kotlin}"
 
-    api project(":app:ui:legacy")
+    api project(k9Modules.UI.legacy)
     implementation project(k9Modules.core)
     implementation project(k9Modules.storage)
     implementation project(k9Modules.cryptoOpenpgp)
